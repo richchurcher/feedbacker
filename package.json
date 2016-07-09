@@ -48,8 +48,8 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "google-auth-library": "^0.9.8",
     "googleapis": "^10.0.0",
-    "googleauth": "^3.0.2",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2"
   }
