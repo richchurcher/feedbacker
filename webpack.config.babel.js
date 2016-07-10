@@ -9,10 +9,9 @@ export default {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [{
-      loader: 'babel?cacheDirectory',
-      test: /\.jsx?$/
-    }]
+    loaders: [
+      { loader: 'babel?cacheDirectory', test: /\.jsx?$/ }
+    ]
   },
   devServer: {
     stats: 'errors-only'

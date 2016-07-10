@@ -1,12 +1,16 @@
 import React from 'react'
-
-import Grid from './grid.jsx'
+import {checkAuth} from '../api/sheets.js'
 
 export default React.createClass({
+  getInitialState () {
+    checkAuth()
+    return {}
+  },
+
   render () {
     return (
       <div>
-        <Grid />
+        So much feedback.
       </div>
     )
   }
