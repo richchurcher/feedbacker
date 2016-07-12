@@ -10,7 +10,8 @@ export default {
   },
   module: {
     loaders: [
-      { loader: 'babel?cacheDirectory', test: /\.jsx?$/ }
+      { loader: 'babel?cacheDirectory', test: /\.jsx?$/ },
+      { loader: 'json', test: /\.json$/ }
     ]
   },
   devServer: {

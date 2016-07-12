@@ -1,0 +1,6 @@
+{
+  "client_id": "63311552019-vka9pen5tcldl2hhh70mpf8k4oroit3g.apps.googleusercontent.com",
+  "scope": "https://www.googleapis.com/auth/spreadsheets.readonly",
+  "sheet": "1vD-7Oq3YCSocZqrJEfTEmsG45sX8hYo_M8IoZfxSLDc",
+  "discovery_url": "https://sheets.googleapis.com/$discovery/rest?version=v4"
+}
