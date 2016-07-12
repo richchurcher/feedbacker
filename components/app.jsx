@@ -1,9 +1,10 @@
 import React from 'react'
-import {checkAuth} from '../api/sheets.js'
+import login from '../api/auth.js'
+import loadSheet from '../api/sheets.js'
 
 export default React.createClass({
   getInitialState () {
-    checkAuth()
+    login(loadSheet)
     return {}
   },
 

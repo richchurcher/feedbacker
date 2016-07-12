@@ -1,29 +1,7 @@
 /* global gapi */
 import config from '../config.json'
 
-export function checkAuth () {
-  setTimeout(() => {
-    gapi.auth.authorize({
-      'client_id': config.client_id,
-      'scope': config.scope,
-      'immediate': true
-    }, handleAuthResult)
-  }, 200)
-}
-
-function handleAuthResult (authResult) {
-  if (authResult && !authResult.error) {
-    loadSheetsApi()
-  } else {
-    gapi.auth.authorize({
-      'client_id': config.client_id,
-      'scope': config.scope,
-      'immediate': false
-    }, handleAuthResult)
-  }
-}
-
-function loadSheetsApi () {
+export default function loadSheetsApi () {
   gapi.client
     .load(config.discovery_url)
     .then(displaySheet, err => {
