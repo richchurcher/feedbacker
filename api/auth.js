@@ -2,7 +2,7 @@
 import config from '../config.json'
 
 export default function login (next) {
-  // Needs a slight timeout to avoid gapi being undefined
+  // Temp: needs a slight timeout to avoid gapi being undefined
   setTimeout(() => {
     checkAuth(next)
   }, 200)

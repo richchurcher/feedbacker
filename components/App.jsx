@@ -4,7 +4,9 @@ import loadSheet from '../api/sheets.js'
 
 export default React.createClass({
   getInitialState () {
-    login(loadSheet)
+    login(loadSheet, (err, sheet) => {
+
+    })
     return {}
   },
 
