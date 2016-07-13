@@ -1,26 +1,26 @@
 /* global gapi */
 import config from '../config.json'
 
-export default function loadSheetsApi () {
+export default function loadSheetsApi (next) {
   gapi.client
     .load(config.discovery_url)
-    .then(displaySheet, err => {
-      console.error('Error retrieving spredsheet:', err)
+    .then(() => {
+      displaySheet(next)
     })
 }
 
-function displaySheet () {
+function displaySheet (next) {
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: config.sheet,
     range: 'NEW u1.w1!A:Z'
-  }).then(response => {
-    const range = response.result
-    if (range.values.length > 0) {
-      console.log(range)
-    } else {
-      console.log('No data found.')
-    }
-  }, response => {
-    console.error('Error: ' + response.result.error.message)
   })
+    .then(response => {
+      console.log(response)
+      if (response.result.values.length === 0) {
+        return next('No results', null)
+      }
+      return next(null, response.result.values)
+    }, response => {
+      console.error('Error: ' + response.result.error.message)
+    })
 }

@@ -4,10 +4,25 @@ import loadSheet from '../api/sheets.js'
 
 export default React.createClass({
   getInitialState () {
-    login(loadSheet, (err, sheet) => {
+    return {
+      error: '',
+      sheet: []
+    }
+  },
 
+  componentDidMount () {
+    this.serverRequest = login((err, sheet) => {
+      loadSheet((err, sheet) => {
+        this.setState({
+          error: err,
+          sheet: sheet
+        })
+      })
     })
-    return {}
+  },
+
+  componentWillUnmount () {
+    this.serverRequest.abort()
   },
 
   render () {
