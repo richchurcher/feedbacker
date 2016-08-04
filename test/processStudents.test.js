@@ -14,30 +14,17 @@ test('processStudent translates strings to property values', t => {
   t.deepEqual(actual, expected)
 })
 
-test('getColumns returns the first array in values', t => {
-  const sheet = {
-    values: [
-      ['one', 'two', 'three']
-    ]
-  }
-  const expected = ['one', 'two', 'three']
-  const actual = students.getColumns(sheet)
-  t.deepEqual(actual, expected)
-})
-
 test('processStudents returns an object for each array in values', t => {
-  const sheet = {
-    values: [
+  const rows = [
       ['one', 'two', 'three'],
       [], [], [], [],
       ['flargle', 'argle', 'wargle'],
       ['bargle', 'dargle', 'yargle']
     ]
-  }
   const expected = [
     { 'one': 'flargle', 'two': 'argle', 'three': 'wargle' },
     { 'one': 'bargle', 'two': 'dargle', 'three': 'yargle' }
   ]
-  const actual = students.processStudents(sheet)
+  const actual = students.processStudents(rows)
   t.deepEqual(actual, expected)
 })

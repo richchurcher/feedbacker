@@ -2,6 +2,7 @@ import React from 'react'
 import login from '../api/auth'
 import loadSheet from '../api/sheets'
 import {processStudents} from '../processStudents'
+import Students from './Students'
 
 export default React.createClass({
   getInitialState () {
@@ -35,7 +36,7 @@ export default React.createClass({
   render () {
     return (
       <div>
-        So much feedback.
+        <Students studentList={this.state.students} />
       </div>
     )
   }

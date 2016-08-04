@@ -5,15 +5,10 @@ export function processStudent (columns, values) {
   }, {})
 }
 
-export function getColumns (sheet) {
-  return sheet.values[0]
-}
-
-export function processStudents (sheet) {
-  const columns = getColumns(sheet)
+export function processStudents (rows) {
   // First four rows are metadata
-  const rows = sheet.values.splice(5)
-  return rows.map(row => {
-    return processStudent(columns, row)
+  const students = rows.slice(5)
+  return students.map(row => {
+    return processStudent(rows[0], row)
   })
 }

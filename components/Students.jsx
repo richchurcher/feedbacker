@@ -1,9 +1,14 @@
 import React, {PropTypes} from 'react'
 
-export default Students
-const Students = (props) => {
-  return (
-    <div>
-    </div>
-  )
-}
+export default React.createClass({
+  render () {
+    const students = this.props.studentList.map((student, i) => {
+      return (
+        <div key={i}>
+          STUDENT
+        </div>
+      )
+    })
+    return (<div>{students}</div>)
+  }
+})
