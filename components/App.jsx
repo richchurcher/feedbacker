@@ -1,21 +1,28 @@
 import React from 'react'
-import login from '../api/auth.js'
-import loadSheet from '../api/sheets.js'
+import login from '../api/auth'
+import loadSheet from '../api/sheets'
+import {processStudents} from '../processStudents'
 
 export default React.createClass({
   getInitialState () {
     return {
       error: '',
-      sheet: []
+      students: []
     }
   },
 
   componentDidMount () {
     this.serverRequest = login((err, sheet) => {
+      if (err) {
+        this.setState({
+          error: err.message
+        })
+      }
       loadSheet((err, sheet) => {
+        const students = processStudents(sheet)
         this.setState({
           error: err,
-          sheet: sheet
+          students: students
         })
       })
     })
