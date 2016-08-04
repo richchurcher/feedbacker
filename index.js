@@ -1,6 +1,17 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import {render} from 'react-dom'
+import {Router, Route, browserHistory} from 'react-router'
 
 import App from './components/App'
+import Students from './components/Students'
+import Student from './components/Student'
 
-ReactDOM.render(<App/>, document.getElementById('app'))
+render((
+  <Router history={browserHistory}>
+    <Route path='/' component={App}>
+      <Route path='students' component={Students}>
+        <Route path='students/:github' component={Student}/>
+      </Route>
+    </Route>
+  </Router>
+), document.getElementById('app'))
