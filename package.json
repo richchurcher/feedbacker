@@ -12,7 +12,6 @@
     "watch": "webpack --watch"
   },
   "ava": {
-    "failfast": true,
     "tap": true,
     "require": [
       "babel-register"

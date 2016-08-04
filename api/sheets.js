@@ -15,9 +15,8 @@ function displaySheet (next) {
     range: 'NEW u1.w1!A:Z'
   })
     .then(response => {
-      console.log(response)
       if (response.result.values.length === 0) {
-        return next('No results', null)
+        return next(new Error('No results'), null)
       }
       return next(null, response.result.values)
     }, response => {
