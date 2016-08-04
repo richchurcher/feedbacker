@@ -2,5 +2,32 @@
   "client_id": "63311552019-vka9pen5tcldl2hhh70mpf8k4oroit3g.apps.googleusercontent.com",
   "scope": "https://www.googleapis.com/auth/spreadsheets.readonly",
   "sheet": "1vD-7Oq3YCSocZqrJEfTEmsG45sX8hYo_M8IoZfxSLDc",
-  "discovery_url": "https://sheets.googleapis.com/$discovery/rest?version=v4"
+  "discovery_url": "https://sheets.googleapis.com/$discovery/rest?version=v4",
+  "shortforms": {
+    "timestamp":    "Timestamp",
+    "cohort":       "Cohort",
+    "year":         "Year ",
+    "name":         "Full name",
+    "email":        "Email",
+    "hours":        "I spent around ___ hours on phase-0 this week",
+    "longest":      "The challenge / concept / assignment  that took me the most time was ____ because ____. ",
+    "clarity":      "The instructions in the repository were clear and easy to follow",
+    "reading":      "I prefer learning by:  [Reading]",
+    "auditory":     "I prefer learning by:  [Video or Audio tutorials / explanations ]",
+    "kinesthetic":  "I prefer learning by:  [Coding / practical exercises]",
+    "visual":       "I prefer learning by:  [Visual imagery]",
+    "resources":    "There was enough resources to suit my learning:",
+    "integrity":    "I am turning up with Integrity",
+    "kindness":     "I am turning up with Kindness",
+    "effort":       "I am turning up with Effort",
+    "blocked":      "Did you feel blocked or in need of help this week?",
+    "unblocked":    "If you felt block or in need of help, how did you get unblocked?",
+    "favourite":    "Was there a favourite moment or challenge from this week that you'd like to share with us?",
+    "change":       "If you could make one change to this weeks material, what would it be:",
+    "confused":     "I am confused by:",
+    "tellEDA":      "I would like EDA to know:",
+    "feedback":     "Open feedback:",
+    "unit":         "This weeks Unit",
+    "Unit":         "Unit "
+  }
 }
