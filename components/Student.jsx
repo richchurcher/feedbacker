@@ -1,16 +1,13 @@
 import React, {PropTypes} from 'react'
 
-export default Student
-const Student = (props) => {
+const Student = props => {
   return (
     <div>
-      <p>{props.name}</p>
-      <p>{props.email}</p>
+      {props.row['Full name']}
+      <ul>
+        {Object.keys(props.row).map((field, i) => <li key={i}>{props.row[field]}</li>)}
+      </ul>
     </div>
   )
 }
-
-Student.propTypes = {
-  name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired
-}
+export default Student
