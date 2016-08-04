@@ -21,7 +21,7 @@
     "I am turning up with Kindness":                                                              "kindness",
     "I am turning up with Effort":                                                                "effort",
     "Did you feel blocked or in need of help this week?":                                         "blocked",
-    "If you felt block or in need of help, how did you get unblocked?",                           "unblocked",
+    "If you felt block or in need of help, how did you get unblocked?":                           "unblocked",
     "Was there a favourite moment or challenge from this week that you'd like to share with us?": "favourite",
     "If you could make one change to this weeks material, what would it be":                      "change",
     "I am confused by:":                                                                          "confused",
@@ -29,5 +29,10 @@
     "Open feedback:":                                                                             "feedback",
     "This weeks Unit":                                                                            "unit",
     "Unit ":                                                                                      "Unit" 
+  },
+  "collapseColumns": {
+    "unit": "Unit"
+  },
+  "skipColumns": {
   }
 }

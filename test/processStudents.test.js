@@ -22,6 +22,14 @@ test('simplifyKeys translates keys but not values', t => {
   t.deepEqual(actual, expected)
 })
 
+test('collapseColumns consolidates values of multiple pairs of property names', t => {
+  const collapseColumns = { one: 'two', three: 'four' }
+  const student = { one: '', two: 'wombat', three: 'aardvark', four: '' }
+  const expected = { two: 'wombat', four: 'aardvark' }
+  const actual = students.collapseColumns(student, collapseColumns)
+  t.deepEqual(actual, expected)
+})
+
 test('processStudents returns an object for each array in values', t => {
   const rows = [
       ['one', 'two', 'three'],

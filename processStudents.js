@@ -23,3 +23,16 @@ export function simplifyKeys (student, shortforms) {
   }
   return simplified
 }
+
+// Consolidate values from two columns if one is empty string
+export function collapseColumns (student, columns) {
+  const collapsed = Object.assign({}, student)
+  for (const discard in columns) {
+    const keep = columns[discard]
+    if (student.hasOwnProperty(keep) && student.hasOwnProperty(discard)) {
+      collapsed[keep] = student[keep] === '' ? student[discard] : student[keep]
+      delete collapsed[discard]
+    }
+  }
+  return collapsed
+}
