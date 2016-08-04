@@ -12,3 +12,14 @@ export function processStudents (rows) {
     return processStudent(rows[0], row)
   })
 }
+
+export function simplifyKeys (student, shortforms) {
+  const simplified = {}
+  for (const key in student) {
+    if (shortforms.hasOwnProperty(key)) {
+      const newKey = shortforms[key]
+      simplified[newKey] = student[key]
+    }
+  }
+  return simplified
+}

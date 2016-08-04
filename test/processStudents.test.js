@@ -14,6 +14,14 @@ test('processStudent translates strings to property values', t => {
   t.deepEqual(actual, expected)
 })
 
+test('simplifyKeys translates keys but not values', t => {
+  const shortforms = { 'long prop one': 'one', 'long prop two': 'two', 'long prop three': 'three' }
+  const student = { 'long prop one': 1, 'long prop two': 2, 'long prop three': 3 }
+  const expected = { 'one': 1, 'two': 2, 'three': 3 }
+  const actual = students.simplifyKeys(student, shortforms)
+  t.deepEqual(actual, expected)
+})
+
 test('processStudents returns an object for each array in values', t => {
   const rows = [
       ['one', 'two', 'three'],
