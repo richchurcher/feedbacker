@@ -1,3 +1,14 @@
+export function processStudents (rows, shortforms) {
+  // First four rows are metadata
+  const students = rows.slice(5)
+  const columns = rows[0].map(column => {
+    return simplifyKey(column, shortforms)
+  })
+  return students.map(row => {
+    return processStudent(columns, row)
+  })
+}
+
 export function processStudent (columns, values) {
   return columns.reduce((student, column, i) => {
     student[column] = values[i]
@@ -5,23 +16,8 @@ export function processStudent (columns, values) {
   }, {})
 }
 
-export function processStudents (rows) {
-  // First four rows are metadata
-  const students = rows.slice(5)
-  return students.map(row => {
-    return processStudent(rows[0], row)
-  })
-}
-
-export function simplifyKeys (student, shortforms) {
-  const simplified = {}
-  for (const key in student) {
-    if (shortforms.hasOwnProperty(key)) {
-      const newKey = shortforms[key]
-      simplified[newKey] = student[key]
-    }
-  }
-  return simplified
+export function simplifyKey (key, shortforms) {
+  return shortforms.hasOwnProperty(key) ? shortforms[key] : key
 }
 
 // Consolidate values from two columns if one is empty string

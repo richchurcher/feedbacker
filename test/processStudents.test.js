@@ -14,11 +14,11 @@ test('processStudent translates strings to property values', t => {
   t.deepEqual(actual, expected)
 })
 
-test('simplifyKeys translates keys but not values', t => {
+test('simplifyKey translates keys', t => {
   const shortforms = { 'long prop one': 'one', 'long prop two': 'two', 'long prop three': 'three' }
-  const student = { 'long prop one': 1, 'long prop two': 2, 'long prop three': 3 }
-  const expected = { 'one': 1, 'two': 2, 'three': 3 }
-  const actual = students.simplifyKeys(student, shortforms)
+  const column = 'long prop one'
+  const expected = 'one'
+  const actual = students.simplifyKey(column, shortforms)
   t.deepEqual(actual, expected)
 })
 
@@ -32,15 +32,16 @@ test('collapseColumns consolidates values of multiple pairs of property names', 
 
 test('processStudents returns an object for each array in values', t => {
   const rows = [
-      ['one', 'two', 'three'],
+      ['long prop one', 'long prop two', 'long prop three'],
       [], [], [], [],
       ['flargle', 'argle', 'wargle'],
       ['bargle', 'dargle', 'yargle']
     ]
+  const shortforms = { 'long prop one': 'one', 'long prop two': 'two', 'long prop three': 'three' }
   const expected = [
     { 'one': 'flargle', 'two': 'argle', 'three': 'wargle' },
     { 'one': 'bargle', 'two': 'dargle', 'three': 'yargle' }
   ]
-  const actual = students.processStudents(rows)
+  const actual = students.processStudents(rows, shortforms)
   t.deepEqual(actual, expected)
 })
