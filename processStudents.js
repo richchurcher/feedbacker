@@ -4,12 +4,17 @@ export function processStudents (rows, config) {
   const columns = rows[0].map(column => {
     return simplifyKey(column, config.shortforms)
   })
-  return students.map(row => {
-    return processStudent(columns, row)
-  })
+
+  return students
+    .map(student => {
+      return processStudent(student, columns)
+    })
+    .map(student => {
+      return collapseColumns(student, config.collapseColumns)
+    })
 }
 
-export function processStudent (columns, values) {
+export function processStudent (values, columns) {
   return columns.reduce((student, column, i) => {
     student[column] = values[i]
     return student
@@ -17,7 +22,10 @@ export function processStudent (columns, values) {
 }
 
 export function simplifyKey (key, shortforms) {
-  return shortforms.hasOwnProperty(key) ? shortforms[key] : key
+  if (shortforms) {
+    return shortforms.hasOwnProperty(key) ? shortforms[key] : key
+  }
+  return key
 }
 
 // Consolidate values from two columns if one is empty string

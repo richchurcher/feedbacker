@@ -10,7 +10,7 @@ test('processStudent translates strings to property values', t => {
     two: 'argle',
     three: 'wargle'
   }
-  const actual = students.processStudent(columns, values)
+  const actual = students.processStudent(values, columns)
   t.deepEqual(actual, expected)
 })
 
@@ -32,16 +32,30 @@ test('collapseColumns consolidates values of multiple pairs of property names', 
 
 test('processStudents returns an object for each array in values', t => {
   const rows = [
-      ['long prop one', 'long prop two', 'long prop three'],
-      [], [], [], [],
-      ['flargle', 'argle', 'wargle'],
-      ['bargle', 'dargle', 'yargle']
-    ]
-  const config = { shortforms: { 'long prop one': 'one', 'long prop two': 'two', 'long prop three': 'three' } }
+    ['long prop one', 'long prop two', 'long prop three'],
+    [], [], [], [],
+    ['flargle', 'argle', 'wargle'],
+    ['bargle', 'dargle', 'yargle']
+  ]
+  const config = { 
+    shortforms: { 'long prop one': 'one', 'long prop two': 'two', 'long prop three': 'three' }
+  }
   const expected = [
     { 'one': 'flargle', 'two': 'argle', 'three': 'wargle' },
     { 'one': 'bargle', 'two': 'dargle', 'three': 'yargle' }
   ]
+  const actual = students.processStudents(rows, config)
+  t.deepEqual(actual, expected)
+})
+
+test('processStudents collapses columns appropriately', t => {
+  const rows = [
+    ['Foo', 'foo'],
+    [], [], [], [],
+    ['flargle', '']
+  ]
+  const config = { collapseColumns: { Foo: 'foo' } }
+  const expected = [{ foo: 'flargle' }]
   const actual = students.processStudents(rows, config)
   t.deepEqual(actual, expected)
 })
