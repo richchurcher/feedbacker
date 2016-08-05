@@ -1,17 +1,15 @@
 import React from 'react'
 import {render} from 'react-dom'
-import {Router, Route, browserHistory} from 'react-router'
+import {Router, Route, hashHistory} from 'react-router'
 
 import App from './components/App'
 import Students from './components/Students'
-import Student from './components/Student'
 
 render((
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route path='/' component={App}>
-      <Route path='students' component={Students}>
-        <Route path='students/:github' component={Student}/>
-      </Route>
+      <Route path='/students' component={Students}/>
+      <Route path='/students/:name' component={Students}/>
     </Route>
   </Router>
 ), document.getElementById('app'))

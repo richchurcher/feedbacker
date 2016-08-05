@@ -4,6 +4,8 @@ import loadSheet from '../api/sheets'
 import {processStudents} from '../processStudents'
 import Students from './Students'
 import config from '../config.json'
+import filter from '../filterStudents'
+import {Link} from 'react-router'
 
 export default React.createClass({
   getInitialState () {
@@ -21,7 +23,7 @@ export default React.createClass({
         })
       }
       loadSheet((err, sheet) => {
-        const students = processStudents(sheet, config.shortforms)
+        const students = processStudents(sheet, config)
         this.setState({
           error: err,
           students: students
@@ -34,10 +36,19 @@ export default React.createClass({
     this.serverRequest.abort()
   },
 
+  renderChildren () {
+    return React.Children.map(this.props.children, child => {
+      if (child.type === Students) {
+        return React.cloneElement(child, { studentList: this.state.students })
+      }
+      return child
+    })
+  },
+
   render () {
     return (
       <div>
-        <Students studentList={this.state.students} />
+        {this.renderChildren()}
       </div>
     )
   }

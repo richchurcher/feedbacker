@@ -3,7 +3,9 @@ import React from 'react'
 import {shallow} from 'enzyme'
 import App from '../components/App'
 
-test('App shallow correct', t => {
+test('App contains Students', t => {
   const wrapper = shallow(<App />)
-  t.is(wrapper.contains(''), false)
+  const expected = 1
+  const actual = wrapper.find('Students').length
+  t.is(actual, expected)
 })
