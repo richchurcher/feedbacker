@@ -3,6 +3,7 @@ import login from '../api/auth'
 import loadSheet from '../api/sheets'
 import {processStudents} from '../processStudents'
 import Students from './Students'
+import config from '../config.json'
 
 export default React.createClass({
   getInitialState () {
@@ -20,7 +21,7 @@ export default React.createClass({
         })
       }
       loadSheet((err, sheet) => {
-        const students = processStudents(sheet)
+        const students = processStudents(sheet, config.shortforms)
         this.setState({
           error: err,
           students: students

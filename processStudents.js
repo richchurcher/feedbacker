@@ -1,8 +1,8 @@
-export function processStudents (rows, shortforms) {
+export function processStudents (rows, config) {
   // First four rows are metadata
   const students = rows.slice(5)
   const columns = rows[0].map(column => {
-    return simplifyKey(column, shortforms)
+    return simplifyKey(column, config.shortforms)
   })
   return students.map(row => {
     return processStudent(columns, row)

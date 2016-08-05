@@ -37,11 +37,11 @@ test('processStudents returns an object for each array in values', t => {
       ['flargle', 'argle', 'wargle'],
       ['bargle', 'dargle', 'yargle']
     ]
-  const shortforms = { 'long prop one': 'one', 'long prop two': 'two', 'long prop three': 'three' }
+  const config = { shortforms: { 'long prop one': 'one', 'long prop two': 'two', 'long prop three': 'three' } }
   const expected = [
     { 'one': 'flargle', 'two': 'argle', 'three': 'wargle' },
     { 'one': 'bargle', 'two': 'dargle', 'three': 'yargle' }
   ]
-  const actual = students.processStudents(rows, shortforms)
+  const actual = students.processStudents(rows, config)
   t.deepEqual(actual, expected)
 })
